@@ -8,7 +8,8 @@ var markers = []
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
-  initMap(); // added 
+  registerServiceWorker();
+  initMap(); // added
   fetchNeighborhoods();
   fetchCuisines();
 });
@@ -78,7 +79,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: '<your MAPBOX API KEY HERE>',
+    mapboxToken: 'pk.eyJ1IjoiemFyYW5kb2siLCJhIjoiY2prcXRlY3RmMTFuNDN3cGNzcDNmbXpkdSJ9.9tFlOmvQJrWXDeMS_UPXeg',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -197,7 +198,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 
-} 
+}
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
@@ -209,3 +210,14 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+//Here we register Service worker, which is the sw.js file. It logs out, if the registration worked ot not
+let registerServiceWorker = () => {
+	if (!navigator.serviceWorker) return;
+
+	navigator.serviceWorker.register('/sw.js').then(function(reg) {
+		console.log('Registration worked!');
+    }).catch(function(err) {
+    	console.log('Registration failed :(');
+    	console.log(err);
+    })
+}
