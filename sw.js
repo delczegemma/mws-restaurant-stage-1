@@ -1,24 +1,43 @@
+
 //Make a cache
-let staticCacheName = 'restrew-static-v1';
+var CACHE_NAME = "restrew-static-v1";
 
-self.addEventListener('fetch', function(event) {
+self.addEventListener("install", event => {
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(cache => {
+            return cache.addAll([
+                "/",
+                "css/styles.css",
+                "data/restaurants.json",
+                '/img/1.jpg',
+        		'/img/2.jpg',
+        		'/img/3.jpg',
+        		'/img/4.jpg',
+        		'/img/5.jpg',
+        		'/img/6.jpg',
+        		'/img/7.jpg',
+        		'/img/8.jpg',
+        		'/img/9.jpg',
+        		'/img/10.jpg',
+                "js/dbhelper.js",
+                "js/main.js",
+                "js/restaurant_info.js",
+                "index.html",
+                "restaurant.html",
+                "https://unpkg.com/leaflet@1.3.1/dist/leaflet.css",
+                "https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"
+            ]);
+        })
+    );
+});
 
-
-
-
-	//Save every requested assets in the cache by any fetch event
-	event.respondWith(() => {
-		let fetchRequest = event.request.clone();
-		return fetch(event.request).then(response => {
-			let fetchResponse = response.clone();
-			caches.open(staticCacheName).then(function(cache) {
-    			// return cache.put(event.request, fetchResponse);
-    			cache.put(event.request, fetchResponse);
-    			return response;
-    		})
-	    }).catch(() => {
-	    	//If there is a saved request in the cache, load in the page
-	    	return caches.match(event.request)
-    })
-	})
-})
+//IF we are cache first, we check, if the requested element is in the cache.
+//If it is, then load from the cache.
+self.addEventListener("fetch", event => {
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            if (response) return response;
+            return fetch(event.request);
+        })
+    );
+});
