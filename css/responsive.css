@@ -1,20 +1,20 @@
 @media screen and (min-width:800px) {
-  body {
+  body.home {
   	box-shadow: 5px 4px 25px 7px rgba(128,128,133,1);
   	margin: 0 auto;
     width: 85%;
   }
 
-  nav {
+  .home nav {
   	align-items: flex-start;
   	text-align: left;
   }
-  nav h1 {
+  .home nav h1 {
   	font-size: 1.95em;
   	margin-left: 1.5em;
   }
 
-  #map-container{
+  .home #map-container{
   	border: 0 solid #808085 ;
   	border-width: 0 1.5px;
   }
@@ -26,9 +26,43 @@
   	margin: 15px 0 25px;
   }
 
-.filter-options .select-container {
+	.filter-options .select-container {
   	display: block;
   }
 
+/*Reviews page content*/
+	body.inside {
+		display: flex;
+		height: 100vh;
+	}
+
+	.inside header {
+  		position: static;
+	}
+
+	.inside #maincontent {
+		align-items: stretch;
+		display: flex;
+		flex: 1 0 0;
+		flex-direction: row;
+		min-height: 0;
+	}
+
+	.inside #map-container {
+		flex: 2 0 0;
+		height: 100%;
+		order: 2;
+	}
+
+	#restaurant-container, #reviews-container{
+		flex: 1 0 0;
+		font-size: .8em;
+		overflow-y: scroll;
+		padding: 0 1.875em 0;
+	}
+
+	#reviews-list li {
+		width: 100%;
+	}
 }
 
