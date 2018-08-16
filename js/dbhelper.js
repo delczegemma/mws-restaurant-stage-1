@@ -147,6 +147,23 @@ class DBHelper {
   }
 
   /**
+   * Restaurant image alt attributes
+   */
+  static altForRestaurant(restaurant) {
+    const ALT_ATTRIBUTES = ["Crowded evening at the Mission Chinese Food Restaurant",
+                        "Margaritha pizza with loads of cheese",
+                        "Built-in oven tables in the shiny-clean, empty restaurant",
+                        "Fish-eye picture from the corner of the Katz's delicatessen",
+                        "Crowded interuour with hard-working bar tenders",
+                        "A warehouse-like interuour with american flag-mural at the background",
+                        "Black and white pictrue from the utside of the Burgerhouse with two men walking a dog at the foreground",
+                        "The nameplate fo the place: the Dutch",
+                        "Asian yungsters with glasses eating",
+                        "White and clean empty interiour"];
+    return (ALT_ATTRIBUTES[restaurant.id-1])
+  }
+
+  /**
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
@@ -157,7 +174,7 @@ class DBHelper {
    * Map marker for a restaurant.
    */
    static mapMarkerForRestaurant(restaurant, map) {
-    // https://leafletjs.com/reference-1.3.0.html#marker  
+    // https://leafletjs.com/reference-1.3.0.html#marker
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
       alt: restaurant.name,
@@ -165,7 +182,7 @@ class DBHelper {
       })
       marker.addTo(newMap);
     return marker;
-  } 
+  }
   /* static mapMarkerForRestaurant(restaurant, map) {
     const marker = new google.maps.Marker({
       position: restaurant.latlng,

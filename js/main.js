@@ -4,6 +4,8 @@ let restaurants,
 var newMap
 var markers = []
 
+
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -162,6 +164,13 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+
+  /*
+  * Add image alt attribute; as in the two pages the pictures are the same,
+  * I managed to get the attributes from the dbHelper to provide DRY code.
+  */
+
+  image.setAttribute("alt", DBHelper.altForRestaurant(restaurant));
   li.append(image);
 
   const name = document.createElement('h1');
