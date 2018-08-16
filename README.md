@@ -5,12 +5,12 @@
 
 * [Description](#description)
 * [Project Instructions](#project-instructions)
-* [Installation](#installation-and-running)
+* [Installation](#installation)
 * [Contributing](#contributing)
 
 ## Description
 
-The Restaurant Review app is a project provided for Udacity-students. In the FEND path, there is the 6 project out of 8. From a given sample (which you can find at the [Udacity repository] (https://github.com/udacity/mws-restaurant-stage-1) the students must build a responsive, highly accesible page with offline availbe content through a service worker.
+The Restaurant Review app is a project provided for Udacity-students. In the FEND path, there is the 6 project out of 8. From a given sample (which you can find at the [Udacity repository](https://github.com/udacity/mws-restaurant-stage-1) the students must build a responsive, highly accesible page with offline availbe content through a service worker.
 
 ## Project Instructions
 
