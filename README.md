@@ -5,9 +5,8 @@
 
 * [Description](#description)
 * [Project Instructions](#project-instructions)
-* [Installation and running](#installation-and-running)
+* [Installation](#installation-and-running)
 * [Contributing](#contributing)
-* [Author](#author)
 
 ## Description
 
