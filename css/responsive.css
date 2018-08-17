@@ -1,10 +1,4 @@
 @media screen and (min-width:800px) {
-  body.home {
-  	box-shadow: 5px 4px 25px 7px rgba(128,128,133,1);
-  	margin: 0 auto;
-    width: 85%;
-  }
-
   .home nav {
   	align-items: flex-start;
   	text-align: left;
