@@ -5,6 +5,7 @@ var newMap;
  * Initialize map as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
+  registerServiceWorker();
   initMap();
 });
 
@@ -198,4 +199,16 @@ getParameterByName = (name, url) => {
   if (!results[2])
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
+//Here we register Service worker, which is the sw.js file. It logs out, if the registration worked ot not
+let registerServiceWorker = () => {
+  if (!navigator.serviceWorker) return;
+
+  navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    console.log('Registration worked!');
+    }).catch(function(err) {
+      console.log('Registration failed :(');
+      console.log(err);
+    })
 }
